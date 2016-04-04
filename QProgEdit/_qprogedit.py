@@ -17,8 +17,10 @@ You should have received a copy of the GNU General Public License
 along with QProgEdit.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+import sys
 from qtpy import QtGui, QtCore, QtWidgets
 from QProgEdit import QEditor, QEditorPrefs, QEditorFind
+from QProgEdit.py3compat import *
 
 class QProgEdit(QtWidgets.QWidget):
 
@@ -211,7 +213,8 @@ class QProgEdit(QtWidgets.QWidget):
 		else:
 			widget.setMaximumHeight(widget.bestHeight)
 		widget.show()
-		a = QtCore.QPropertyAnimation(widget, u'maximumHeight', widget)
+		a = QtCore.QPropertyAnimation(widget, safe_encode(u'maximumHeight', \
+				enc=sys.getfilesystemencoding()), widget)
 		if not visible:
 			a.setStartValue(widget.bestHeight)
 			a.setEndValue(0)
