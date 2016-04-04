@@ -213,8 +213,7 @@ class QProgEdit(QtWidgets.QWidget):
 		else:
 			widget.setMaximumHeight(widget.bestHeight)
 		widget.show()
-		a = QtCore.QPropertyAnimation(widget, safe_encode(u'maximumHeight', \
-				enc=sys.getfilesystemencoding()), widget)
+		a = QtCore.QPropertyAnimation(widget, safe_encode(u'maximumHeight'), widget)
 		if not visible:
 			a.setStartValue(widget.bestHeight)
 			a.setEndValue(0)
